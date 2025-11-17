@@ -56,12 +56,15 @@ ax.set_xlim(x0 - delta, x0 + delta)
 ax.set_ylim(x0 - delta, x0 + delta)
 
 dette_prev1 = []
+solde_prev1 = []
 xn = x0
 dette_prev1.append(xn*100)
+solde_prev1 = [s_stable(xn)*100]
 
 for n_iter in range(t):
     yn = d(xn, s0)
     dette_prev1.append(yn*100)
+    solde_prev1 = [s_stable(xn)*100]
     # verticale : de (xn, xn) à (xn, yn)
     ax.plot([xn, xn], [xn, yn], color='green', linewidth=1)
     # horizontale : de (xn, yn) à (yn, yn)
