@@ -63,13 +63,13 @@ solde_prev1.append(s_stable(xn)*100)
 
 for n_iter in range(t):
     yn = d(xn, s0)
-    dette_prev1.append(yn*100)
-    solde_prev1.append(s_stable(xn)*100)
     # verticale : de (xn, xn) à (xn, yn)
     ax.plot([xn, xn], [xn, yn], color='green', linewidth=1)
     # horizontale : de (xn, yn) à (yn, yn)
     ax.plot([xn, yn], [yn, yn], color='green', linewidth=1)
     xn = yn
+    dette_prev1.append(yn * 100)
+    solde_prev1.append(s_stable(xn) * 100)
 
 ax.scatter(x0, x0, color='black', s=60, zorder=5, label=f'Dette actuelle ({x0:.4f})')
 
