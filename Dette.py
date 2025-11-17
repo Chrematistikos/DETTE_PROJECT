@@ -162,12 +162,15 @@ s4 = s0
 delta4 = (x0 - x_Obj)/n
 dette_prev4 = []
 solde_star4 = []
+dette_prev4.append(x4*100)
 
 for _ in range(n):
     s4 = ((1 + r) / (1 + g) - 1) * x4 + delta4
+    solde_star4.append(s4 * 100)
     x4 = d(x4, s4)
-    solde_star4.append(s4*100)
     dette_prev4.append(x4*100)
+
+solde_star4.append(s_stable(x4)*100)
 
 
 annee4 = [a0 + j for j in range(len(dette_prev4))]
