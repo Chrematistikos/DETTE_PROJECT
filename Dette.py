@@ -39,12 +39,10 @@ x_star1 = x_stable(s0)
 y_star1 = x_star1
 st.write(f"Point fixe calculé : {x_star1*100:.4f}% du PIB")
 
-# Définition du domaine autour du point fixe
-delta = abs(x_star1) * 2 if x_star1 != 0 else 1
-x_vals = np.linspace(x_star1 - delta, x_star1 + delta, 500)
+delta = abs(x0) * 2 if x0 != 0 else 1
+x_vals = np.linspace(x0 - delta, x0 + delta, 500)
 y_vals = d(x_vals, s0)
 
-# --- Tracé des fonctions et point fixe ---
 fig, ax = plt.subplots(figsize=(10,7))
 ax.plot(x_vals, y_vals, label=r'$y = \frac{1 + r}{1 + g}x - s$', color='red', linewidth=1)
 ax.plot(x_vals, x_vals, label=r'$y = x$', color='blue', linewidth=1)
@@ -53,23 +51,32 @@ ax.plot([x_star1, x_star1], [0, y_star1], color='gray', linestyle='--', linewidt
 ax.plot([0, x_star1], [y_star1, y_star1], color='gray', linestyle='--', linewidth=1)
 ax.axhline(y=0, color='black', linewidth=1)
 ax.axvline(x=0, color='black', linewidth=1)
-ax.set_xlim(x_star1 - delta, x_star1 + delta)
-ax.set_ylim(y_star1 - delta, y_star1 + delta)
-ax.set_title('Dynamique de la dette - Situation actuelle')
+
+ax.set_xlim(x0 - delta, x0 + delta)
+ax.set_ylim(x0 - delta, x0 + delta)
+
+dette_prev1 = []
+xn = x0
+dette_prev1.append(xn*100)
+
+for n_iter in range(t):
+    yn = d(xn, s0)
+    dette_prev1.append(yn*100)
+    # verticale : de (xn, xn) à (xn, yn)
+    ax.plot([xn, xn], [xn, yn], color='green', linewidth=1)
+    # horizontale : de (xn, yn) à (yn, yn)
+    ax.plot([xn, yn], [yn, yn], color='green', linewidth=1)
+    xn = yn
+
+ax.scatter(x0, x0, color='black', s=60, zorder=5, label=f'Dette actuelle ({x0:.4f})')
+
+ax.set_title('Dynamique de la dette')
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 ax.grid(True, linestyle=':')
 ax.legend()
 st.pyplot(fig)
 
-# Simulation trajectoire dette
-x = x0
-dette_prev1 = [x*100]
-solde_prev1 = [s_stable(x)*100]
-for _ in range(t):
-    x = d(x, s0)
-    dette_prev1.append(x*100)
-    solde_prev1.append(s_stable(x)*100)
 
 annee1 = [a0 + i for i in range(len(dette_prev1))]
 
