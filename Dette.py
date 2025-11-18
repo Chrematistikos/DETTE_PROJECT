@@ -172,6 +172,8 @@ for _ in range(n):
 
 solde_star4.append(s_stable(x4)*100)
 
+st.write(dette_prev4)
+
 
 annee4 = [a0 + j for j in range(len(dette_prev4))]
 fig5, ax5 = plt.subplots(figsize=(10,5))
