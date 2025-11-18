@@ -17,7 +17,7 @@ a0 = st.sidebar.number_input("Année actuelle", value=2025, step=1)
 x_Obj = (st.sidebar.number_input("Objectif de dette (% PIB)", value=100.0, step=0.5))/100
 t = st.sidebar.number_input("Durée de projection pour la trajectoire  (années)", value=5, step=1)
 n = st.sidebar.number_input("Durée pour atteindre l'objectif de dette (années)", value=10, step=1)
-effort = (st.sidebar.number_input("Effort annuel pour l'ajustement progressif (% PIB)", value=0.5, step=0.1))/100
+effort = (st.sidebar.number_input("Effort annuel pour l'ajustement progressif (% PIB)", value=0.5,min_value=0.1, step=0.1))/100
 
 
 # Menu
@@ -175,10 +175,12 @@ if menu == "Réduction de dette":
 
     annee4 = [a0 + j for j in range(len(dette_prev4))]
 
+    st.subheader("Trajectoire de la dette")
     fig5, ax5 = plt.subplots(figsize=(10,5))
     ax5.plot(annee4, dette_prev4, marker='o')
     st.pyplot(fig5)
 
+    st.subheader("Trajectoire du solde")
     fig6, ax6 = plt.subplots(figsize=(10,5))
     ax6.plot(annee4, solde_star4, marker='o')
     st.pyplot(fig6)
@@ -207,10 +209,12 @@ if menu == "Réduction de dette (solde constant)":
 
     annee_const = [a0 + i for i in range(len(dette_const))]
 
+    st.subheader("Trajectoire de la dette")
     fig7, ax7 = plt.subplots(figsize=(10,5))
     ax7.plot(annee_const, dette_const, marker='o')
     st.pyplot(fig7)
 
+    st.subheader("Trajectoire du solde")
     fig8, ax8 = plt.subplots(figsize=(10,5))
     ax8.plot(annee_const, solde_const, marker='o')
     st.pyplot(fig8)
