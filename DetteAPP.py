@@ -22,7 +22,7 @@ effort = (st.sidebar.number_input("Effort annuel pour l'ajustement progressif (%
 
 # Menu
 menu = st.sidebar.radio(
-    "Choisissez une section que vous voulez",
+    "Choisissez une section",
     [
         "Situation actuelle",
         "Ajustement instantané",
