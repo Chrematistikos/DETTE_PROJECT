@@ -104,7 +104,6 @@ if menu == "Ajustement instantané":
     st.header("2️⃣ Ajustement instantané")
 
     s_star2 = s_stable(x0)
-    st.write(f"x0 : {x0}; r : {r}; g : {g}")
     st.write(f"Solde primaire stabilisant : {s_star2*100:.4f}% du PIB")
 
     x = x0
