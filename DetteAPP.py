@@ -15,9 +15,9 @@ s0 = (st.sidebar.number_input("Solde primaire actuel (% PIB)", value=-3.2, step=
 x0 = (st.sidebar.number_input("Dette actuelle (% PIB)", value=115.0, step=0.5))/100
 a0 = st.sidebar.number_input("Année actuelle", value=2025, step=1)
 t = st.sidebar.number_input("Durée de projection pour la trajectoire  (années)", value=5, step=1)
+effort = (st.sidebar.number_input("Effort annuel pour l'ajustement progressif (% PIB)", value=0.5,min_value=0.1, step=0.1))/100
 x_Obj = (st.sidebar.number_input("Objectif de dette (% PIB)", value=100.0, step=0.5))/100
 n = st.sidebar.number_input("Durée pour atteindre l'objectif de dette (années)", value=10, step=1)
-effort = (st.sidebar.number_input("Effort annuel pour l'ajustement progressif (% PIB)", value=0.5,min_value=0.1, step=0.1))/100
 
 
 # Menu
@@ -49,7 +49,7 @@ def x_stable(s):
 # 1️⃣ SITUATION ACTUELLE
 # =============================================================================
 if menu == "Situation actuelle":
-    st.header("1️⃣ Situation actuelle")
+    st.header("Situation actuelle")
     x_star1 = x_stable(s0)
     y_star1 = x_star1
     st.write(f"Point fixe calculé : {x_star1*100:.4f}% du PIB")
@@ -101,7 +101,7 @@ if menu == "Situation actuelle":
 # 2️⃣ AJUSTEMENT INSTANTANÉ
 # =============================================================================
 if menu == "Ajustement instantané":
-    st.header("2️⃣ Ajustement instantané")
+    st.header("Ajustement instantané")
 
     s_star2 = s_stable(x0)
     st.write(f"Solde primaire stabilisant : {s_star2*100:.4f}% du PIB")
@@ -115,6 +115,7 @@ if menu == "Ajustement instantané":
 
     annee2 = [a0 + j for j in range(len(dette_prev2))]
 
+    st.subheader("Trajectoire de la dette suite à l'ajustement instantané")
     fig3, ax3 = plt.subplots(figsize=(10,5))
     ax3.plot(annee2, dette_prev2, marker='o')
     st.pyplot(fig3)
@@ -124,7 +125,7 @@ if menu == "Ajustement instantané":
 # 3️⃣ AJUSTEMENT PROGRESSIF
 # =============================================================================
 if menu == "Ajustement progressif":
-    st.header("3️⃣ Ajustement progressif")
+    st.header("Ajustement progressif")
 
     x = x0
     s3 = s0
@@ -156,7 +157,7 @@ if menu == "Ajustement progressif":
 # 4️⃣ RÉDUCTION DE DETTE – solde variable
 # =============================================================================
 if menu == "Réduction de dette (solde variable)":
-    st.header("4️⃣ Réduction de dette avec solde variable")
+    st.header("Réduction de dette avec solde variable")
 
     x4 = x0
     s4 = s0
@@ -190,7 +191,7 @@ if menu == "Réduction de dette (solde variable)":
 # 5️⃣ RÉDUCTION DE DETTE – solde constant
 # =============================================================================
 if menu == "Réduction de dette (solde constant)":
-    st.header("5️⃣ Réduction de dette avec solde constant")
+    st.header("Réduction de dette avec solde constant")
 
     alpha = (1 + r) / (1 + g)
     s_const = (alpha**n * x0 - x_Obj) * (1 - alpha) / (1 - alpha**n)
