@@ -3,6 +3,8 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
+from Dette import dette_prev1
+
 # =============================================================================
 # INTERFACE UTILISATEUR
 # =============================================================================
@@ -83,6 +85,8 @@ if menu == "Situation actuelle":
         dette_prev1.append(yn * 100)
         solde_prev1.append(s_stable(xn) * 100)
 
+    ax.plot([0, dette_prev1[0]], [dette_prev1[0], dette_prev1[0]], color='gray', linestyle='--')
+    ax.plot([0, dette_prev1[-1]], [dette_prev1[-1], dette_prev1[-1]], color='gray', linestyle='--')
     st.pyplot(fig)
 
     annee1 = [a0 + i for i in range(len(dette_prev1))]
