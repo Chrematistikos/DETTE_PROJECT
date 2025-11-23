@@ -54,11 +54,10 @@ if menu == "Situation actuelle":
     y_star1 = x_star1
     st.write(f"Point fixe calculé : {x_star1:.4f}% du PIB")
 
-    x0 = x0*100
-    s0= s0*100
-    delta = (abs(x0) * 2 if x0 != 0 else 1)
-    x_vals = np.linspace(x0 - delta, x0 + delta, 500)
-    y_vals = d(x_vals, s0)
+
+    delta = (abs(x0*100) * 2 if x0*100 != 0 else 1)
+    x_vals = np.linspace(x0 - delta, x0*100 + delta, 500)
+    y_vals = d(x_vals, s0*100)
 
     fig, ax = plt.subplots(figsize=(10,7))
     ax.plot(x_vals, y_vals, label=r'$y = \frac{1 + r}{1 + g}x - s$', color='red')
@@ -67,8 +66,8 @@ if menu == "Situation actuelle":
     ax.plot([x_star1, x_star1], [0, y_star1], color='gray', linestyle='--')
     ax.plot([0, x_star1], [y_star1, y_star1], color='gray', linestyle='--')
 
-    ax.set_xlim(x0 - delta, x0 + delta)
-    ax.set_ylim(x0 - delta, x0 + delta)
+    ax.set_xlim(x0*100 - delta, x0*100 + delta)
+    ax.set_ylim(x0*100 - delta, x0*100 + delta)
 
     dette_prev1 = []
     solde_prev1 = []
