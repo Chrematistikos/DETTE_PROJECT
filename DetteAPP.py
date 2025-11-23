@@ -105,7 +105,7 @@ if menu == "Situation actuelle":
 
     ax.set_xlabel("Dette (% PIB)")
     ax.set_ylabel("Itération suivante (% PIB)")
-    ax.set_title("Dynamique de la dette (itérations)")
+    ax.set_title("Dynamique de la dette")
     ax.legend()
 
     st.pyplot(fig)
@@ -120,7 +120,7 @@ if menu == "Situation actuelle":
     ax.grid(True)
     st.pyplot(fig)
 
-    st.subheader("Trajectoire du solde stabilisant la dette")
+    st.subheader("Trajectoire du solde")
     fig2, ax2 = plt.subplots(figsize=(10, 5))
     ax2.plot(annee1, solde_prev1, marker='o')
     ax2.set_ylabel("Solde stabilisant (% PIB)")
