@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # =============================================================================
 # INTERFACE UTILISATEUR
 # =============================================================================
-st.title("Simulation de la dette publique")
+#st.title("Simulation de la dette publique")
 
 # Paramètres ajustables
 r = (st.sidebar.number_input("Taux d'intérêt actuel (%)", value=2.5, step=0.01))/100
