@@ -15,7 +15,7 @@ r = (st.sidebar.number_input("Taux d'intérêt actuel (%)", value=2.5, step=0.1)
 g = (st.sidebar.number_input("Taux de croissance actuel (%)", value=1.8, step=0.1))/100
 s0 = (st.sidebar.number_input("Solde primaire actuel (% PIB)", value=-3.2, step=0.1))/100
 x0 = (st.sidebar.number_input("Dette actuelle (% PIB)", value=115.0, step=0.5))/100
-a0 = st.sidebar.number_input("Année actuelle", value=2025, step=1)
+a0 = st.sidebar.number_input("Année actuelle", value=2026, step=1)
 t = st.sidebar.number_input("Durée de projection pour la trajectoire  (années)", value=5, step=1)
 effort = (st.sidebar.number_input("Effort annuel pour l'ajustement progressif (% PIB)", value=0.5,min_value=0.1, step=0.1))/100
 x_Obj = (st.sidebar.number_input("Objectif de dette (% PIB)", value=100.0, step=0.5))/100
