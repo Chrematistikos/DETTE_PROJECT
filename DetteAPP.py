@@ -60,7 +60,7 @@ if menu == "Situation actuelle":
     fig, ax = plt.subplots(figsize=(10, 7))
 
     # --- Domaine autour de x0 ---
-    delta = abs(x0 + t / 50) * 0.5
+    delta = abs(x0) * 0.5
     x_vals = np.linspace(x0 - delta, x0 + delta, 500)
     y_vals = d(x_vals, s0)
 
