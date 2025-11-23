@@ -74,7 +74,7 @@ if menu == "Situation actuelle":
         solde_prev1.append(s_stable(xn) * 100)
 
     # --- Domaine autour de x0 ---
-    delta = abs(x0 + dette_prev1[-1]) * 0.5
+    delta = abs(x0 + dette_prev1[-1]/100) * 0.5
     x_vals = np.linspace(x0 - delta, x0 + delta, 500)
     y_vals = d(x_vals, s0)
 
