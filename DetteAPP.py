@@ -77,7 +77,8 @@ if menu == "Situation actuelle":
 
     for _ in range(t):
         yn = d(xn, s0)
-        ax.plot([xn*100, xn*100], [xn*100, yn*100], color='green')
+        st.write(xn,yn)
+        ax.plot([xn * 100, xn * 100], [xn * 100, yn * 100], color='green')
         ax.plot([xn*100, yn*100], [yn*100, yn*100], color='green')
         xn = yn
         dette_prev1.append(yn * 100)
